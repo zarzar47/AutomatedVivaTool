@@ -1,0 +1,212 @@
+{
+  "Set A": [
+    {
+      "id": "A1",
+      "question": "In a PL/SQL procedure, what is the main difference between an IN and an OUT parameter?",
+      "options": {
+        "A": "IN is for numbers, OUT is for strings.",
+        "B": "IN passes a value into the procedure, while OUT is used to return a value from the procedure.",
+        "C": "IN parameters are write-only.",
+        "D": "OUT parameters are read-only."
+      },
+      "answer": "B"
+    },
+    {
+      "id": "A2",
+      "question": "What is the primary limitation of using `SELECT...INTO` that often requires using an explicit cursor instead?",
+      "options": {
+        "A": "It cannot be used with a WHERE clause.",
+        "B": "It is slower than a cursor.",
+        "C": "It will raise an error if the query returns zero rows or more than one row.",
+        "D": "It cannot handle more than two columns."
+      },
+      "answer": "C"
+    },
+    {
+      "id": "A3",
+      "question": "After running `DELETE FROM employees WHERE job_id = 'IT_PROG';`, you check `SQL%ROWCOUNT` and the value is 0. What does this signify?",
+      "options": {
+        "A": "The entire table is now empty.",
+        "B": "The DELETE statement failed with an error.",
+        "C": "No employees had the job_id 'IT_PROG'.",
+        "D": "The transaction was automatically rolled back."
+      },
+      "answer": "C"
+    }
+  ],
+  "Set B": [
+    {
+      "id": "B1",
+      "question": "Which statement is used to skip the rest of the current loop iteration and begin the next one immediately?",
+      "options": {
+        "A": "EXIT",
+        "B": "BREAK",
+        "C": "CONTINUE",
+        "D": "NEXT"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "B2",
+      "question": "Inside a cursor fetch loop, which attribute is best to check if the most recent `FETCH` statement successfully retrieved a row?",
+      "options": {
+        "A": "%ISOPEN",
+        "B": "%ROWCOUNT",
+        "C": "%FOUND",
+        "D": "%SUCCESS"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "B3",
+      "question": "Where must a variable be placed in a PL/SQL block to be usable by SQL statements within the `BEGIN...END` section?",
+      "options": {
+        "A": "In the BEGIN section, right before its first use.",
+        "B": "In the DECLARE section.",
+        "C": "In the EXCEPTION section.",
+        "D": "In a separate package header."
+      },
+      "answer": "B"
+    }
+  ],
+  "Set C": [
+    {
+      "id": "C1",
+      "question": "If you perform a calculation like `v_result := 100 / 0;` in PL/SQL, which specific, predefined exception will be raised?",
+      "options": {
+        "A": "NO_DATA_FOUND",
+        "B": "VALUE_ERROR",
+        "C": "ZERO_DIVIDE",
+        "D": "TOO_MANY_ROWS"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "C2",
+      "question": "Given the following PL/SQL procedure:\n\n```plsql\nCREATE OR REPLACE PROCEDURE increase_salary(p_emp_id NUMBER) AS\nBEGIN\n  UPDATE employees\n  SET salary = salary * 1.1\n  WHERE employee_id = p_emp_id;\n\n  IF SQL%ROWCOUNT = 0 THEN\n    DBMS_OUTPUT.PUT_LINE('No employee found with ID ' || p_emp_id);\n  ELSE\n    DBMS_OUTPUT.PUT_LINE('Salary updated for employee ' || p_emp_id);\n  END IF;\nEND;\n```\nWhich statement best describes what happens when this procedure is executed with a non-existent employee ID?",
+      "options": {
+        "A": "It raises the NO_DATA_FOUND exception.",
+        "B": "It raises the TOO_MANY_ROWS exception.",
+        "C": "It prints 'No employee found with ID ...' using SQL%ROWCOUNT.",
+        "D": "It fails because SQL%ROWCOUNT cannot be used after an UPDATE."
+      },
+      "answer": "C"
+    },
+    {
+      "id": "C3",
+      "question": "In a cursor `FOR` loop (`FOR rec IN my_cursor LOOP...`), the record `rec` is not declared in the DECLARE section. Why?",
+      "options": {
+        "A": "It is a global variable.",
+        "B": "It must be declared, otherwise it is an error.",
+        "C": "The loop implicitly declares the record for you.",
+        "D": "It is a pointer to the memory location."
+      },
+      "answer": "C"
+    }
+  ],
+  "Set D": [
+    {
+      "id": "D1",
+      "question": "When using `SELECT...INTO` in PL/SQL, if the query uses JOIN operations and returns no rows, which exception will be raised?",
+      "options": {
+        "A": "`TOO_MANY_ROWS`",
+        "B": "`NO_DATA_FOUND`",
+        "C": "`INVALID_CURSOR`",
+        "D": "`ZERO_DIVIDE`"
+      },
+      "answer": "B"
+    },
+    {
+      "id": "D2",
+      "question": "After declaring a cursor with `CURSOR emp_cursor IS SELECT...`, what must you do before you can FETCH data from it?",
+      "options": {
+        "A": "Execute the cursor with `EXEC emp_cursor`",
+        "B": "Open the cursor with `OPEN emp_cursor`",
+        "C": "Initialize the cursor with `INIT emp_cursor`",
+        "D": "You can FETCH immediately after declaration"
+      },
+      "answer": "B"
+    },
+    {
+      "id": "D3",
+      "question": "What is the primary benefit of using PL/SQL blocks over sending multiple individual SQL statements from a client application?",
+      "options": {
+        "A": "PL/SQL is easier to write than SQL.",
+        "B": "PL/SQL blocks reduce network traffic by bundling multiple SQL statements into a single call.",
+        "C": "PL/SQL automatically commits all changes.",
+        "D": "PL/SQL does not require a database connection."
+      },
+      "answer": "B"
+    }
+  ],
+  "Set E": [
+    {
+      "id": "E1",
+      "question": "Which function is used to determine if a number is divisible by 2?",
+      "options": {
+        "A": "`DIVIDE()`",
+        "B": "`REMAINDER()`",
+        "C": "`MOD()`",
+        "D": "`FLOOR()`"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "E2",
+      "question": "In Lab Q6 (get_email), how does the procedure return the employee’s email address to the user?",
+      "options": {
+        "A": "By assigning it to an OUT parameter",
+        "B": "By printing it using DBMS_OUTPUT.PUT_LINE",
+        "C": "By storing it in a temporary table",
+        "D": "By returning it as a function result"
+      },
+      "answer": "B"
+    },
+    {
+      "id": "E3",
+      "question": "What does the `%TYPE` attribute do when declaring a variable in PL/SQL?",
+      "options": {
+        "A": "It creates a new data type.",
+        "B": "It declares a variable with the same data type as a database column or another variable.",
+        "C": "It converts one data type to another.",
+        "D": "It checks if a variable type matches a column type."
+      },
+      "answer": "B"
+    }
+  ],
+  "Set F": [
+    {
+      "id": "F1",
+      "question": "What keyword is used to pass a parameter as input only to a procedure?",
+      "options": {
+        "A": "`OUT`",
+        "B": "`IN OUT`",
+        "C": "`IN`",
+        "D": "`RETURN`"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "F2",
+      "question": "Which of the following is NOT a mandatory section in a PL/SQL block?",
+      "options": {
+        "A": "DECLARE",
+        "B": "BEGIN",
+        "C": "END",
+        "D": "All of the above are mandatory"
+      },
+      "answer": "A"
+    },
+    {
+      "id": "F3",
+      "question": "You use `FOR i IN REVERSE 10..20` to print numbers in decreasing order. What would happen if you wrote `FOR i IN 20..10` without the REVERSE keyword?",
+      "options": {
+        "A": "It would print 20 to 10 in decreasing order.",
+        "B": "It would print 10 to 20 in increasing order.",
+        "C": "The loop would not execute at all because the range is invalid.",
+        "D": "It would raise a syntax error."
+      },
+      "answer": "C"
+    }
+  ]
+}

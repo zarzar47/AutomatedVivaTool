@@ -31,6 +31,7 @@ def initialize_session():
         st.session_state.questions = []
         st.session_state.current_q_index = 0
         st.session_state.answers = []
+        st.session_state.results_saved = False
 
 # --- UI Rendering ---
 def render_home_page():
@@ -84,12 +85,14 @@ def render_completion_page():
     st.balloons()
 
     # Save results to CSV
-    file_exists = os.path.isfile(RESULTS_FILE)
-    with open(RESULTS_FILE, 'a', newline='') as f:
-        writer = csv.DictWriter(f, fieldnames=['erp', 'question_id', 'selected_option'])
-        if not file_exists:
-            writer.writeheader()
-        writer.writerows(st.session_state.answers)
+    if not st.session_state.results_saved:
+        file_exists = os.path.isfile(RESULTS_FILE)
+        with open(RESULTS_FILE, 'a', newline='') as f:
+            writer = csv.DictWriter(f, fieldnames=['erp', 'question_id', 'selected_option'])
+            if not file_exists:
+                writer.writeheader()
+            writer.writerows(st.session_state.answers)
+        st.session_state.results_saved = True
 
     st.subheader("Your Recorded Answers:")
     for ans in st.session_state.answers:

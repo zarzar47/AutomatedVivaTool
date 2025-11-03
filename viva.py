@@ -3,13 +3,16 @@ import json
 import csv
 import random
 import os
+import time
 from pathlib import Path
+from streamlit_autorefresh import st_autorefresh
 
 # --- Configuration ---
 BASE_DIR = Path(__file__).resolve().parent
 QUESTIONS_FILE = BASE_DIR / 'questions.json'
 RESULTS_FILE = BASE_DIR / 'results.csv'
 NUM_QUESTIONS = 5
+TIMER_DURATION_SECONDS = 300  # 5 minutes
 
 # --- Data Loading ---
 def load_all_questions():
@@ -32,6 +35,7 @@ def initialize_session():
         st.session_state.current_q_index = 0
         st.session_state.answers = []
         st.session_state.results_saved = False
+        st.session_state.start_time = 0.0
 
 # --- UI Rendering ---
 def render_home_page():
@@ -45,12 +49,31 @@ def render_home_page():
             all_questions = load_all_questions()
             st.session_state.questions = random.sample(all_questions, NUM_QUESTIONS)
             st.session_state.page = 'viva'
+            st.session_state.start_time = time.time()
             st.rerun()
         else:
             st.error("ERP ID cannot be empty.")
 
 def render_viva_page():
     """Renders the question and answer page."""
+    # Timer logic
+    if st.session_state.start_time == 0.0:
+        st.session_state.start_time = time.time()
+
+    elapsed_time = time.time() - st.session_state.start_time
+    remaining_time = TIMER_DURATION_SECONDS - elapsed_time
+
+    st_autorefresh(interval=1000, key="timer_refresh")
+
+    elapsed_time = time.time() - st.session_state.start_time
+    remaining_time = TIMER_DURATION_SECONDS - elapsed_time
+
+    st.info(f"Time Remaining: {int(remaining_time // 60)} minutes {int(remaining_time % 60)} seconds")
+
+    if remaining_time <= 0:
+        st.session_state.page = 'complete'
+        st.rerun()
+
     q_index = st.session_state.current_q_index
     question = st.session_state.questions[q_index]
     

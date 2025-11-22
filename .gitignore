@@ -1,1 +1,24 @@
-/.venv
+# Python
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.venv/
+
+# PyInstaller
+build/
+dist/
+*.spec
+
+# Streamlit
+.streamlit/secrets.toml
+
+# Generated files
+results.csv
+marked_results.csv
+
+# Google Cloud Credentials (be careful if you have other JSON files)
+# It's recommended to name your credentials file something specific like `gcp_credentials.json`
+# and add that specific name here, rather than ignoring all *.json files.
+# For now, I'll add a generic ignore, but be mindful if you have other JSON files.
+*.json

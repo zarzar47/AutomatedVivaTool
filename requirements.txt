@@ -1,2 +1,5 @@
 streamlit
 streamlit-autorefresh
+gspread
+google-auth-oauthlib
+pandas

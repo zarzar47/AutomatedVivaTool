@@ -2,109 +2,172 @@
   "Set A": [
     {
       "id": "A1",
-      "question": "Which clause in a window function determines how rows are grouped before the function is applied?",
+      "question": "In the lab, you used 'use Lab12' to switch databases. If 'Lab12' didn't exist yet, what did MongoDB do?",
       "options": {
-        "A": "ORDER BY",
-        "B": "GROUP BY",
-        "C": "PARTITION BY",
-        "D": "HAVING"
+        "A": "It threw an error saying 'Database not found'.",
+        "B": "It required you to run a createDatabase command first.",
+        "C": "It switched to it immediately, but the database isn't actually saved until you insert data.",
+        "D": "It automatically created a 'default' collection inside it."
       },
       "answer": "C"
     },
     {
       "id": "A2",
-      "question": "What does the expression AVG(salary) OVER (PARTITION BY department_id) compute?",
+      "question": "In Lab Task 3, you inserted multiple books at once. Which method requires the use of square brackets [ ] around the documents?",
       "options": {
-        "A": "Average salary of all employees",
-        "B": "Average salary per department",
-        "C": "Average salary per employee",
-        "D": "Running average of salaries across all departments"
+        "A": "db.books.insertOne()",
+        "B": "db.books.insertMany()",
+        "C": "db.books.add()",
+        "D": "db.books.create()"
       },
       "answer": "B"
     },
     {
       "id": "A3",
-      "question": "Which window function is most suitable for finding the lowest-paid 3 employees in each department?",
+      "question": "Your book documents had an 'author' field that looked like { name: 'Harper Lee', gender: 'female' }. What is this data structure called in MongoDB?",
       "options": {
-        "A": "SUM()",
-        "B": "FIRST_VALUE()",
-        "C": "RANK()",
-        "D": "COUNT()"
+        "A": "An Array",
+        "B": "An Embedded Document (or Sub-document)",
+        "C": "A Relational Table",
+        "D": "A String"
+      },
+      "answer": "B"
+    },
+    {
+      "id": "A4",
+      "question": "Lab Task 10 asked you to find books by female authors. To filter based on the author's gender inside that embedded document, which syntax is correct?",
+      "options": {
+        "A": "find( { 'gender': 'female' } )",
+        "B": "find( { 'author-gender': 'female' } )",
+        "C": "find( { 'author.gender': 'female' } )",
+        "D": "find( { author[gender]: 'female' } )"
       },
       "answer": "C"
+    },
+    {
+      "id": "A5",
+      "question": "In Lab Task 4, you had to update 'The Hobbit's' genre. Which operator did you use to ensure you only updated the genre without deleting the title or price?",
+      "options": {
+        "A": "$replace",
+        "B": "$set",
+        "C": "$update",
+        "D": "$modify"
+      },
+      "answer": "B"
     }
   ],
-
   "Set B": [
     {
       "id": "B1",
-      "question": "What does the following window function return? LAG(salary, 1) OVER (PARTITION BY job_id ORDER BY salary)",
+      "question": "When you ran the query db.books.find( { price: { $gt: 20 } } ) in Lab Task 7, what were you asking MongoDB to do?",
       "options": {
-        "A": "Salary of the next employee with the same job",
-        "B": "Salary of the previous employee with the same job",
-        "C": "Running average salary within each job",
-        "D": "Maximum salary of the job"
+        "A": "Find books where the price is exactly 20.",
+        "B": "Find books where the price is greater than 20.",
+        "C": "Find books where the price is greater than or equal to 20.",
+        "D": "Find books where the price is less than 20."
       },
       "answer": "B"
     },
     {
       "id": "B2",
-      "question": "Which of the following is NOT a DDL command?",
+      "question": "Lab Task 8 asked you to sort books by year in 'descending order'. Which number corresponds to descending in MongoDB?",
       "options": {
-        "A": "ALTER",
-        "B": "CREATE",
-        "C": "DROP",
-        "D": "GRANT"
+        "A": "0",
+        "B": "1",
+        "C": "-1",
+        "D": "10"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "B3",
+      "question": "In Lab Task 6, you were asked to 'exclude the field _id'. Which projection document achieves this?",
+      "options": {
+        "A": "{ _id: 1 }",
+        "B": "{ _id: 0 }",
+        "C": "{ _id: false }",
+        "D": "{ exclude: '_id' }"
+      },
+      "answer": "B"
+    },
+    {
+      "id": "B4",
+      "question": "Lab Task 14 required finding titles that 'Start with The'. Which Regular Expression (Regex) symbol represents the 'Start' of a string?",
+      "options": {
+        "A": "$ (Dollar sign)",
+        "B": "* (Asterisk)",
+        "C": "/ (Slash)",
+        "D": "^ (Caret)"
       },
       "answer": "D"
     },
     {
-      "id": "B3",
-      "question": "What does the following DDL statement do? ALTER TABLE students ADD age NUMBER;",
+      "id": "B5",
+      "question": "If you run db.books.find() without any arguments inside the parenthesis, what is the result?",
       "options": {
-        "A": "Creates a new table",
-        "B": "Adds a new column to the table",
-        "C": "Deletes a column from the table",
-        "D": "Modifies a constraint"
-      },
-      "answer": "B"
-    }
-  ],
-
-  "Set C": [
-    {
-      "id": "C1",
-      "question": "Which of the following correctly defines a primary key during table creation?",
-      "options": {
-        "A": "CREATE TABLE t(x NUMBER, PRIMARY KEY x);",
-        "B": "CREATE TABLE t(x NUMBER PRIMARY KEY);",
-        "C": "CREATE TABLE t PRIMARY KEY(x);",
-        "D": "ADD PRIMARY KEY TO t(x);"
-      },
-      "answer": "B"
-    },
-    {
-      "id": "C2",
-      "question": "What does the window frame ROWS BETWEEN 2 PRECEDING AND CURRENT ROW represent?",
-      "options": {
-        "A": "A moving window of 2 rows",
-        "B": "A moving window of 3 rows",
-        "C": "All rows in the partition",
-        "D": "Only the current row"
-      },
-      "answer": "B"
-    },
-    {
-      "id": "C3",
-      "question": "Which SQL query correctly retrieves object privileges granted to LAB11USER?",
-      "options": {
-        "A": "SELECT * FROM USER_SYS_PRIVS WHERE USERNAME='LAB11USER';",
-        "B": "SELECT * FROM DBA_USERS WHERE USERNAME='LAB11USER';",
-        "C": "SELECT * FROM DBA_TAB_PRIVS WHERE GRANTEE='LAB11USER';",
-        "D": "SELECT * FROM USER_OBJECTS WHERE OWNER='LAB11USER';"
+        "A": "It returns an error.",
+        "B": "It returns only the first document.",
+        "C": "It returns all documents in the collection.",
+        "D": "It returns the count of documents."
       },
       "answer": "C"
     }
+  ],
+  "Set C": [
+    {
+      "id": "C1",
+      "question": "In Lab Task 13, you had to find books that were EITHER written by a male author OR published before 1950. Which operator allows for this logic?",
+      "options": {
+        "A": "$and",
+        "B": "$either",
+        "C": "$or",
+        "D": "$not"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "C2",
+      "question": "MongoDB is 'Schema-less'. Based on the lecture, what does this practically mean for your books collection?",
+      "options": {
+        "A": "You cannot use data types like Integers or Booleans.",
+        "B": "Every document must have exactly the same fields (Title, Author, Price).",
+        "C": "One book document could have a 'pages' field, while another book document is missing it entirely.",
+        "D": "You must define a table structure before inserting data."
+      },
+      "answer": "C"
+    },
+    {
+      "id": "C3",
+      "question": "In Lab Task 15, you likely combined $or and $and. If you write { genre: 'Fantasy', price: 18 }, how does MongoDB interpret the relationship between these two fields?",
+      "options": {
+        "A": "It treats it as an implicit AND (Must match both).",
+        "B": "It treats it as an implicit OR (Match either one).",
+        "C": "It treats it as an error.",
+        "D": "It prioritizes the first field and ignores the second."
+      },
+      "answer": "A"
+    },
+    {
+      "id": "C4",
+      "question": "Which command helps you see which databases currently exist on your server?",
+      "options": {
+        "A": "show collections",
+        "B": "display dbs",
+        "C": "show dbs",
+        "D": "list databases"
+      },
+      "answer": "C"
+    },
+    {
+      "id": "C5",
+      "question": "In Lab Task 9, you had to find books with pages *between* 300 and 500. Which combination of operators handles a 'between' range?",
+      "options": {
+        "A": "$gt and $lt (or $gte/$lte)",
+        "B": "$in and $out",
+        "C": "$between and $and",
+        "D": "$low and $high"
+      },
+      "answer": "A"
+    }
   ]
 }
-

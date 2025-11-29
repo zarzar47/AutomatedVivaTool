@@ -134,7 +134,7 @@ def render_viva_page():
                 st.session_state.current_q_index += 1
                 st.rerun()
 
-    st.subheader(question['question'])
+    st.subheader(question['question'].replace('$', r'\$'))
     
     options = list(question['options'].values())
     
@@ -148,10 +148,11 @@ def render_viva_page():
     st.radio(
         "Choose your answer:",
         options,
-        key=f"q_radio_{q_index}",
         index=pre_selected_index,
+        key=f"q_radio_{q_index}",
         on_change=save_answer,
-        args=(q_index,)
+        args=(q_index,),
+        format_func=lambda text: text.replace('$', r'\$')
     )
 
     if q_index == NUM_QUESTIONS - 1:
